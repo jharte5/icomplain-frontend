@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Consumer } from '../../Context/Context';
+import { Consumer } from '../Context/Context';
 import validator from 'validator';
-import InputGroup from '../../Shared/InputGroup';
-import ButtonGroup from '../../Shared/ButtonGroup';
-import { login } from '../../Services/AuthHelpers';
-import { isAuthenticated } from '../../Services/AuthHelpers';
+import InputGroup from '../Shared/InputGroup';
+import ButtonGroup from '../Shared/ButtonGroup';
+import { login } from '../Services/AuthHelpers';
+import { isAuthenticated } from '../Services/AuthHelpers';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './Login.css';
