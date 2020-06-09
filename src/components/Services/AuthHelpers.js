@@ -13,12 +13,12 @@ export const createUser = async userInfo => {
   }
 };
 
-export const login = async userInfo => {
+export const login = async userStuff => {
   try {
-    let success = await Axios.post('/api/users/login', userInfo, {
+    let success = await Axios.post('/api/users/login', userStuff, {
       withCredentials: true,
     });
-
+      console.log(success)
     return success.data;
   } catch (e) {
     console.log(e);

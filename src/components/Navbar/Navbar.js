@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import AuthNavLinks from './AuthNavLinks';
-import UnAuthNavLinks from './UnAuthNavLinks';
-import { isAuthenticated, setUserAuth } from '../Helpers/AuthHelpers';
+import AuthLinks from './AuthLinks';
+import UnAuthLinks from './UnAuthLinks';
+import { isAuthenticated, setUserAuth } from '../Services/AuthHelpers';
 import { Consumer } from '../Context/Context';
 import './Navbar.css';
 
@@ -37,9 +37,9 @@ export default class Navbar extends Component {
               </NavLink>
               <nav>
                 {user && auth ? (
-                  <AuthNavLinks {...user} {...auth} />
+                  <AuthLinks {...user} {...auth} />
                 ) : (
-                  <UnAuthNavLinks />
+                  <UnAuthLinks />
                 )}
               </nav>
             </header>

@@ -10,7 +10,8 @@ export default class Landing extends Component {
     return (
       <div className="landing">
         <BlogSlider />
-        <Signup />
+        {/* <Signup /> */}
+        <Login />
       </div>
     );
   }

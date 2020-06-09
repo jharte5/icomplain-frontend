@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Context } from '../Context/Context';
-import { logout } from '../Helpers/AuthHelpers';
+import { logout } from '../Services/AuthHelpers';
 import './Navbar.css';
 
 class AuthLinks extends Component {

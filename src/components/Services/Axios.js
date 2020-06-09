@@ -34,7 +34,7 @@ Axios.interceptors.response.use(
       request.baseURL === process.env.REACT_APP_API_HOST_ADDRESS
     ) {
       try {
-        let refreshToken = Cookies.get('jwt-cookie-refresh-expense');
+        let refreshToken = Cookies.get('jwt-cookie-refresh-blog');
 
         let success = await Axios.get('/api/users/refresh-token', {
           withCredentials: true,
@@ -45,7 +45,7 @@ Axios.interceptors.response.use(
           },
         });
         if (success.status === 200) {
-          let newToken = Cookies.get('jwt-cookie-expense');
+          let newToken = Cookies.get('jwt-cookie-blog');
           request.headers.Authorization = `Bearer ${newToken}`;
           let success = await Axios(request);
           return success;

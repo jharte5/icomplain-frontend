@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {withRouter} from 'react-router-dom'
 import { Consumer } from '../Context/Context';
 import validator from 'validator';
 import InputGroup from '../Shared/InputGroup';
@@ -9,7 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './Login.css';
 
-export default class Login extends Component {
+class Login extends Component {
   state = {
     canSubmit: true,
     formSetting: {
@@ -45,8 +46,9 @@ export default class Login extends Component {
   };
 
   componentDidMount() {
+    console.log(this.props)
     if (isAuthenticated()) {
-      this.props.history.push('/');
+      this.props.history.push('/blogs');
     }
   }
 
@@ -154,7 +156,8 @@ export default class Login extends Component {
         formSetting: inputForm,
       });
 
-      this.props.history.push('/expense');
+      this.props.history.push('/blogs');
+      console.log(this.props)
     } catch (e) {
       toast.error(e.message, {
         position: 'top-center',
@@ -196,7 +199,7 @@ export default class Login extends Component {
                 pauseOnHover
               />
 
-              <h1>Sign in</h1>
+              <h1>Login</h1>
               <form
                 className="login-form"
                 onSubmit={e => this.onSubmit(e, dispatch)}
@@ -221,7 +224,7 @@ export default class Login extends Component {
 
                 <ButtonGroup
                   buttonStyle="form-button"
-                  title="sign in"
+                  title="Login"
                   disabled={canSubmit}
                 />
               </form>
@@ -232,3 +235,5 @@ export default class Login extends Component {
     );
   }
 }
+
+export default withRouter(Login)
