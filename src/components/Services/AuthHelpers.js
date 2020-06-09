@@ -8,6 +8,7 @@ export const createUser = async userInfo => {
 
     return success.data;
   } catch (e) {
+    console.log(e)
     throw Error(e.response.data.message);
   }
 };
@@ -28,7 +29,7 @@ export const login = async userInfo => {
 export const isAuthenticated = () => {
   if (typeof window == 'undefined') return false;
 
-  let foundCookie = Cookies.get('jwt-cookie-expense');
+  let foundCookie = Cookies.get('jwt-cookie-blog');
 
   if (foundCookie) {
     return foundCookie;
@@ -49,8 +50,8 @@ export const setUserAuth = (jwtToken, dispatch) => {
 export const logout = async () => {
   try {
     await Axios.get('/api/users/logout');
-    Cookies.remove('jwt-cookie-expense');
-    Cookies.remove('jwt-cookie-refresh-expense');
+    Cookies.remove('jwt-cookie-blog');
+    Cookies.remove('jwt-cookie-refresh-blog');
   } catch (e) {
     throw Error(e.response.data.message);
   }

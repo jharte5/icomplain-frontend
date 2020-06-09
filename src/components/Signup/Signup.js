@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { createUser } from '../Services/AuthHelpers';
 import { isAuthenticated } from '../Services/AuthHelpers';
 import { ToastContainer, toast } from 'react-toastify';
 import validator from 'validator';
@@ -7,6 +6,7 @@ import InputGroup from '../Shared/InputGroup';
 import ButtonGroup from '../Shared/ButtonGroup';
 import 'react-toastify/dist/ReactToastify.css';
 import './Signup.css';
+import { createUser } from '../Services/AuthHelpers';
 
 export default class Signup extends Component {
   state = {
@@ -264,6 +264,7 @@ export default class Signup extends Component {
         formSetting: inputForm,
       });
     } catch (e) {
+      console.log(e)
       toast.error(e.message, {
         position: 'top-center',
         autoClose: 5000,
