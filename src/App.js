@@ -1,14 +1,14 @@
 import React from 'react';
 import Landing from './components/Landing/Landing';
-// import Provider from './components/Context/Context';
+import {Provider} from './components/Context/Context';
 
 function App() {
   return (
-    // <Provider>
+    <Provider>
       <div className="App">
         <Landing />
       </div>
-    // </Provider>
+    </Provider>
   );
 }
 

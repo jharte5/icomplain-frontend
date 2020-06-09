@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { createUser } from '../Helpers/AuthHelpers';
-import { isAuthenticated } from '../Helpers/AuthHelpers';
+import { createUser } from '../Services/AuthHelpers';
+import { isAuthenticated } from '../Services/AuthHelpers';
 import { ToastContainer, toast } from 'react-toastify';
 import validator from 'validator';
-import InputGroup from '../shared/InputGroup';
-import ButtonGroup from '../shared/ButtonGroup';
+import InputGroup from '../Shared/InputGroup';
+import ButtonGroup from '../Shared/ButtonGroup';
 import 'react-toastify/dist/ReactToastify.css';
 import './Signup.css';
 
@@ -244,8 +244,8 @@ export default class Signup extends Component {
       let inputForm = {
         ...this.state.formSetting,
       };
-
       inputForm['email'].value = '';
+      console.log(inputForm.value)
       inputForm['password'].value = '';
       inputForm['username'].value = '';
 
