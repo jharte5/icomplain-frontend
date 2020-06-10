@@ -56,3 +56,9 @@ export const logout = async () => {
     throw Error(e.response.data.message);
   }
 };
+
+// export const updateProfile = async (profileInfo) => {
+//   try {
+//     let success = await Axios.
+//   }
+// }
