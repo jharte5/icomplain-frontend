@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 import { Consumer } from '../Context/Context';
 import validator from 'validator';
 import InputGroup from '../Shared/InputGroup';
@@ -46,7 +46,7 @@ class Login extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props)
+    console.log(this.props);
     if (isAuthenticated()) {
       this.props.history.push('/blogs');
     }
@@ -157,7 +157,7 @@ class Login extends Component {
       });
 
       this.props.history.push('/blogs');
-      console.log(this.props)
+      console.log(this.props);
     } catch (e) {
       toast.error(e.message, {
         position: 'top-center',
@@ -236,4 +236,4 @@ class Login extends Component {
   }
 }
 
-export default withRouter(Login)
+export default withRouter(Login);
