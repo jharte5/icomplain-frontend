@@ -6,7 +6,7 @@ export default function UnAuthLinks() {
   return (
     <div className="nav">
       <NavLink
-        to="/login"
+        to="/"
         className="nav-home"
         activeStyle={{ fontWeight: 'bold' }}
         activeClassName="selected"

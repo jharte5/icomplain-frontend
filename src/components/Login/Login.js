@@ -231,9 +231,7 @@ class Login extends Component {
                       disabled={canSubmit}
                     />
                   </form>
-                  <div className="authlink">
-                    <Link to="/signup">Don't have an account?</Link>
-                  </div>
+                  <Link to="/signup">Don't have an account?</Link>
                 </div>
               </div>
             );

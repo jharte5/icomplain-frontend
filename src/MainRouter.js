@@ -6,7 +6,7 @@ import Footer from './components/Footer/Footer';
 import Blogs from './components/Blogs/Blogs';
 import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
-import AddBlog from './components/AddBlog/AddBlog';
+import AddBlog from './components/Blogs/AddBlog';
 import Landing from './components/Landing/Landing';
 
 export default class MainRouter extends Component {

@@ -1,7 +1,4 @@
 .login {
-  background-image: url('/curse-emoji.webp');
-  background-size: 100px 100px;
-  background-repeat: repeat;
   width: 60%;
 }
 
@@ -24,14 +21,14 @@
   margin-bottom: 1rem;
 }
 
+.login-container a:hover {
+  text-decoration: underline;
+}
+
 .form-style {
   border-radius: 5px;
   padding: 3px;
   margin: 1rem 0;
-}
-
-.login-container a:hover {
-  text-decoration: underline;
 }
 
 .filled {
