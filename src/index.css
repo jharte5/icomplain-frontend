@@ -18,3 +18,7 @@ code {
   display: flex;
   height: 85vh;
 }
+
+a {
+  color: black;
+}

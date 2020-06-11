@@ -1,17 +1,35 @@
 .login {
   display: flex;
   justify-content: center;
-  margin-top: 5rem;
-  width: 55%;
+  /* margin-top: 5rem; */
+  /* width: 55%; */
+}
+
+.login-background {
+  background-image: url('/curse-emoji.webp');
+  background-size: 100px 100px;
+  background-repeat: repeat;
+  width: 60%;
 }
 
 .login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
-  width: 75%;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, white, white, rgba(255, 255, 255, 0));
 }
 
 .login-container h1 {
   margin-top: 10px;
+  text-shadow: 1px 1px 1px white;
+}
+
+.login-container a {
+  margin-top: 10px;
+  text-shadow: 1px 1px 1px white;
 }
 
 .login-form {
@@ -58,8 +76,4 @@
 
 .invalid-message {
   color: red;
-}
-
-.authlink {
-  margin-top: 1.5rem;
 }

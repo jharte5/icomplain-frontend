@@ -265,7 +265,7 @@ class Signup extends Component {
         formSetting: inputForm,
       });
 
-      this.props.history.push('/blogs');
+      // this.props.history.push('/blogs'); // ---------------- reroute to main blogs page
     } catch (e) {
       console.log(e);
       toast.error(e.message, {

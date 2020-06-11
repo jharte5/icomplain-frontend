@@ -188,51 +188,53 @@ class Login extends Component {
         <Consumer>
           {({ dispatch }) => {
             return (
-              <div className="login">
-                <div className="login-container">
-                  <ToastContainer
-                    position="top-center"
-                    autoClose={5000}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                  />
-
-                  <h1>Log in</h1>
-                  <form
-                    className="login-form"
-                    onSubmit={e => this.onSubmit(e, dispatch)}
-                  >
-                    {inputArray.map(element => {
-                      const {
-                        formSetting: { name, placeholder, value, error },
-                      } = element;
-
-                      return (
-                        <InputGroup
-                          key={name}
-                          name={name}
-                          placeholder={placeholder}
-                          onChange={this.onChange}
-                          value={value}
-                          error={error}
-                          type={name}
-                        />
-                      );
-                    })}
-
-                    <ButtonGroup
-                      buttonStyle="form-button"
-                      title="Log in"
-                      disabled={canSubmit}
+              <div className="login-background">
+                <div className="login">
+                  <div className="login-container">
+                    <ToastContainer
+                      position="top-center"
+                      autoClose={5000}
+                      hideProgressBar={false}
+                      newestOnTop={false}
+                      closeOnClick
+                      rtl={false}
+                      pauseOnFocusLoss
+                      draggable
+                      pauseOnHover
                     />
-                  </form>
-                  <div className="authlink">
-                    <Link to="/signup">Don't have an account?</Link>
+
+                    <h1>Log in</h1>
+                    <form
+                      className="login-form"
+                      onSubmit={e => this.onSubmit(e, dispatch)}
+                    >
+                      {inputArray.map(element => {
+                        const {
+                          formSetting: { name, placeholder, value, error },
+                        } = element;
+
+                        return (
+                          <InputGroup
+                            key={name}
+                            name={name}
+                            placeholder={placeholder}
+                            onChange={this.onChange}
+                            value={value}
+                            error={error}
+                            type={name}
+                          />
+                        );
+                      })}
+
+                      <ButtonGroup
+                        buttonStyle="form-button"
+                        title="Log in"
+                        disabled={canSubmit}
+                      />
+                    </form>
+                    <div className="authlink">
+                      <Link to="/signup">Don't have an account?</Link>
+                    </div>
                   </div>
                 </div>
               </div>
