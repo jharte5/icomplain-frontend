@@ -1,48 +1,48 @@
 import React from 'react';
 import ChipInputGroup from './ChipInputGroup';
 import InputGroup from './InputGroup';
-import DatePicker from 'react-datepicker';
+// import DatePicker from 'react-datepicker';
 
 function MultiInputGroup(props) {
   let multiInputField = null;
 
   switch (props.type) {
     case 'text':
-      const { expenseName } = props;
+      const { blogTitle } = props;
       multiInputField = (
         <InputGroup
-          name={expenseName.name}
-          placeholder={expenseName.placeholder}
-          onChange={expenseName.handleOnChange.inputOnChange}
-          value={expenseName.value}
-          error={expenseName.error}
-          type={expenseName.type}
+          name={blogTitle.name}
+          placeholder={blogTitle.placeholder}
+          onChange={blogTitle.handleOnChange.inputOnChange}
+          value={blogTitle.value}
+          error={blogTitle.error}
+          type={blogTitle.type}
         />
       );
       break;
-    case 'number':
-      const { expenseAmount } = props;
+    case 'text':
+      const { blogArticle } = props;
       multiInputField = (
         <InputGroup
-          name={expenseAmount.name}
-          placeholder={expenseAmount.placeholder}
-          onChange={expenseAmount.handleOnChange.inputOnChange}
-          value={expenseAmount.value}
-          error={expenseAmount.error}
-          type={expenseAmount.type}
+          name={blogArticle.name}
+          placeholder={blogArticle.placeholder}
+          onChange={blogArticle.handleOnChange.inputOnChange}
+          value={blogArticle.value}
+          error={blogArticle.error}
+          type={blogArticle.type}
         />
       );
       break;
     case 'dateInput':
       const { dateInput } = props;
 
-      multiInputField = (
-        <DatePicker
-          className="expenses--input-date"
-          selected={dateInput.startDate}
-          onChange={dateInput.handleOnChange.handleOnDateChange}
-        />
-      );
+      // multiInputField = (
+        // <DatePicker
+        //   className="expenses--input-date"
+        //   selected={dateInput.startDate}
+        //   onChange={dateInput.handleOnChange.handleOnDateChange}
+        // />
+      // );
       break;
     case 'chipInput':
       const { chipInput } = props;
