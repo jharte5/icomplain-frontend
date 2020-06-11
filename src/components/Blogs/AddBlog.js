@@ -10,7 +10,7 @@ import {createBlog} from '../Services/AuthHelpers'
 import "./AddBlog.css";
 
 
-class Blog extends Component {
+class AddBlog extends Component {
     static contextType = BlogContext
     constructor(props) {
         super(props);
@@ -280,4 +280,4 @@ class Blog extends Component {
         );
     }
 }
-export default Blog
+export default AddBlog
