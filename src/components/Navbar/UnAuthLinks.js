@@ -4,27 +4,38 @@ import './Navbar.css';
 
 export default function UnAuthLinks() {
   return (
-    <ul className="nav__ul">
-      <li>
-        <NavLink
-          to="/sign-up"
-          className="navbar"
-          activeStyle={{ fontWeight: 'bold' }}
-          activeClassName="selected"
-        >
-          Sign up
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/sign-in"
-          className="navbar "
-          activeStyle={{ fontWeight: 'bold' }}
-          activeClassName="selected"
-        >
-          Sign in
-        </NavLink>
-      </li>
-    </ul>
+    <div className="nav">
+      <NavLink
+        to="/login"
+        className="nav-home"
+        activeStyle={{ fontWeight: 'bold' }}
+        activeClassName="selected"
+        exact
+      >
+        iComplain
+      </NavLink>
+      <ul className="nav-ul">
+        <li>
+          <NavLink
+            to="/signup"
+            className="navbar"
+            activeStyle={{ fontWeight: 'bold' }}
+            activeClassName="selected"
+          >
+            Sign up
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/login"
+            className="navbar"
+            activeStyle={{ fontWeight: 'bold' }}
+            activeClassName="selected"
+          >
+            Log in
+          </NavLink>
+        </li>
+      </ul>
+    </div>
   );
 }

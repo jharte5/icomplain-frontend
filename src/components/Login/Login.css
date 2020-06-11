@@ -1,5 +1,13 @@
+.login {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+  width: 55%;
+}
+
 .login-container {
   text-align: center;
+  width: 75%;
 }
 
 .login-container h1 {
@@ -37,6 +45,7 @@
 
 .form-button-valid {
   background-color: green;
+  cursor: pointer;
 }
 
 .invalid:focus {
@@ -49,4 +58,8 @@
 
 .invalid-message {
   color: red;
+}
+
+.authlink {
+  margin-top: 1.5rem;
 }

@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
+import { withRouter, Link } from 'react-router-dom';
 import { isAuthenticated } from '../Services/AuthHelpers';
 import { ToastContainer, toast } from 'react-toastify';
 import validator from 'validator';
 import InputGroup from '../Shared/InputGroup';
 import ButtonGroup from '../Shared/ButtonGroup';
+import { createUser } from '../Services/AuthHelpers';
+import BlogSlider from '../BlogSlider/BlogSlider';
 import 'react-toastify/dist/ReactToastify.css';
 import './Signup.css';
-import { createUser } from '../Services/AuthHelpers';
 
-export default class Signup extends Component {
+class Signup extends Component {
   state = {
     canSubmit: true,
     formSetting: {
@@ -79,7 +81,7 @@ export default class Signup extends Component {
       if (!validatedPassword) {
         this.setState({
           error:
-            'must contain 1 uppercase, 1 lowercase, and a special character',
+            'Must contain 1 uppercase, 1 lowercase, and 1 special character.',
         });
       } else {
         this.setState({
@@ -126,7 +128,6 @@ export default class Signup extends Component {
   checkInputValidation = (errorState, inputName, inputValue) => {
     switch (inputName) {
       case 'username':
-
         let validatedUsername;
         validatedUsername = validator.matches(
           inputValue,
@@ -245,7 +246,7 @@ export default class Signup extends Component {
         ...this.state.formSetting,
       };
       inputForm['email'].value = '';
-      console.log(inputForm.value)
+      console.log(inputForm.value);
       inputForm['password'].value = '';
       inputForm['username'].value = '';
 
@@ -263,8 +264,10 @@ export default class Signup extends Component {
         ...this.state,
         formSetting: inputForm,
       });
+
+      this.props.history.push('/blogs');
     } catch (e) {
-      console.log(e)
+      console.log(e);
       toast.error(e.message, {
         position: 'top-center',
         autoClose: 5000,
@@ -286,44 +289,53 @@ export default class Signup extends Component {
       });
     }
     return (
-      <div className="signup-container">
-        <ToastContainer
-          position="top-center"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
-        <h1>Sign up</h1>
-        <form onSubmit={this.onSubmit}>
-          {inputArray.map(element => {
-            const {
-              formSetting: { name, placeholder, value, error },
-            } = element;
-            return (
-              <InputGroup
-                key={name}
-                name={name}
-                placeholder={placeholder}
-                onChange={this.onChange}
-                value={value}
-                error={error}
-                type={name}
+      <div className="landing">
+        <BlogSlider />
+        <div className="signup">
+          <div className="signup-container">
+            <ToastContainer
+              position="top-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
+            <h1>Sign up</h1>
+            <form onSubmit={this.onSubmit}>
+              {inputArray.map(element => {
+                const {
+                  formSetting: { name, placeholder, value, error },
+                } = element;
+                return (
+                  <InputGroup
+                    key={name}
+                    name={name}
+                    placeholder={placeholder}
+                    onChange={this.onChange}
+                    value={value}
+                    error={error}
+                    type={name}
+                  />
+                );
+              })}
+              <ButtonGroup
+                buttonStyle="form-button"
+                title="Sign up"
+                disabled={canSubmit}
               />
-            );
-          })}
-
-          <ButtonGroup
-            buttonStyle="form-button"
-            title="Sign up"
-            disabled={canSubmit}
-          />
-        </form>
+            </form>
+            <div className="authlink">
+              <Link to="/login">Already have an account?</Link>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 }
+
+export default withRouter(Signup);

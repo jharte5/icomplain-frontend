@@ -21,23 +21,44 @@ class AuthLinks extends Component {
 
   render() {
     return (
-      <ul className="nav__ul">
-        <li>
-          <NavLink
-            to="/user-profile"
-            className="navbar"
-            activeStyle={{ fontWeight: 'bold' }}
-            activeClassName="selected"
-          >
-            {this.props.username}
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/" className="navbar" onClick={this.logout}>
-            logout
-          </NavLink>
-        </li>
-      </ul>
+      <div className="nav">
+        <NavLink
+          to="/blogs"
+          className="nav-home"
+          activeStyle={{ fontWeight: 'bold' }}
+          activeClassName="selected"
+          exact
+        >
+          iComplain
+        </NavLink>
+        <ul className="nav-ul">
+          <li>
+            <NavLink
+              to="/addblog"
+              className="navbar"
+              activeStyle={{ fontWeight: 'bold' }}
+              activeClassName="selected"
+            >
+              Post blog
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/profile"
+              className="navbar"
+              activeStyle={{ fontWeight: 'bold' }}
+              activeClassName="selected"
+            >
+              {this.props.username}
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/login" className="navbar" onClick={this.logout}>
+              logout
+            </NavLink>
+          </li>
+        </ul>
+      </div>
     );
   }
 }

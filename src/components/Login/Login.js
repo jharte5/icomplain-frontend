@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { Consumer } from '../Context/Context';
 import validator from 'validator';
 import InputGroup from '../Shared/InputGroup';
@@ -7,6 +7,7 @@ import ButtonGroup from '../Shared/ButtonGroup';
 import { login } from '../Services/AuthHelpers';
 import { isAuthenticated } from '../Services/AuthHelpers';
 import { ToastContainer, toast } from 'react-toastify';
+import BlogSlider from '../BlogSlider/BlogSlider';
 import 'react-toastify/dist/ReactToastify.css';
 import './Login.css';
 
@@ -157,7 +158,6 @@ class Login extends Component {
       });
 
       this.props.history.push('/blogs');
-      console.log(this.props);
     } catch (e) {
       toast.error(e.message, {
         position: 'top-center',
@@ -183,55 +183,63 @@ class Login extends Component {
     }
 
     return (
-      <Consumer>
-        {({ dispatch }) => {
-          return (
-            <div className="login-container">
-              <ToastContainer
-                position="top-center"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-              />
+      <div className="landing">
+        <BlogSlider />
+        <Consumer>
+          {({ dispatch }) => {
+            return (
+              <div className="login">
+                <div className="login-container">
+                  <ToastContainer
+                    position="top-center"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                  />
 
-              <h1>Login</h1>
-              <form
-                className="login-form"
-                onSubmit={e => this.onSubmit(e, dispatch)}
-              >
-                {inputArray.map(element => {
-                  const {
-                    formSetting: { name, placeholder, value, error },
-                  } = element;
+                  <h1>Log in</h1>
+                  <form
+                    className="login-form"
+                    onSubmit={e => this.onSubmit(e, dispatch)}
+                  >
+                    {inputArray.map(element => {
+                      const {
+                        formSetting: { name, placeholder, value, error },
+                      } = element;
 
-                  return (
-                    <InputGroup
-                      key={name}
-                      name={name}
-                      placeholder={placeholder}
-                      onChange={this.onChange}
-                      value={value}
-                      error={error}
-                      type={name}
+                      return (
+                        <InputGroup
+                          key={name}
+                          name={name}
+                          placeholder={placeholder}
+                          onChange={this.onChange}
+                          value={value}
+                          error={error}
+                          type={name}
+                        />
+                      );
+                    })}
+
+                    <ButtonGroup
+                      buttonStyle="form-button"
+                      title="Log in"
+                      disabled={canSubmit}
                     />
-                  );
-                })}
-
-                <ButtonGroup
-                  buttonStyle="form-button"
-                  title="Login"
-                  disabled={canSubmit}
-                />
-              </form>
-            </div>
-          );
-        }}
-      </Consumer>
+                  </form>
+                  <div className="authlink">
+                    <Link to="/signup">Don't have an account?</Link>
+                  </div>
+                </div>
+              </div>
+            );
+          }}
+        </Consumer>
+      </div>
     );
   }
 }

@@ -1,21 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-// import Landing from './components/Landing/Landing';
 import { Provider } from './components/Context/Context';
 import MainRouter from './MainRouter';
 
-const App = ({location}) => {
+function App() {
   return (
     <Provider>
-      <Consumer>
-        {({ dispatch }) => {
-      
+      <Router>
         <MainRouter />
-     
-       }}
-      </Consumer>
+      </Router>
     </Provider>
   );
 }
 
-export default withRouter(App);
+export default App;
