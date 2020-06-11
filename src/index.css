@@ -19,6 +19,10 @@ code {
   height: 85vh;
 }
 
+input:focus {
+  outline: none;
+}
+
 a {
   color: black;
 }

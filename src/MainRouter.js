@@ -6,7 +6,8 @@ import Footer from './components/Footer/Footer';
 import Blogs from './components/Blogs/Blogs';
 import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
-import AddBlog from './components/AddBlog/AddBlog'
+import AddBlog from './components/AddBlog/AddBlog';
+import Landing from './components/Landing/Landing';
 
 export default class MainRouter extends Component {
   render() {
@@ -21,6 +22,7 @@ export default class MainRouter extends Component {
                 <Route exact path="/signup" component={Signup} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/blogs" component={Blogs} />
+                <Route exact path="/" component={Landing} />
                 <Route render={() => <h1>Not found</h1>} />
               </Switch>
               <Footer />

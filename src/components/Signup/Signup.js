@@ -327,10 +327,9 @@ class Signup extends Component {
                 title="Sign up"
                 disabled={canSubmit}
               />
+              <br/>
+              <Link to="/login" className="formlink">Already have an account?</Link>
             </form>
-            <div className="authlink">
-              <Link to="/login">Already have an account?</Link>
-            </div>
           </div>
         </div>
       </div>
