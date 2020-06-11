@@ -57,6 +57,55 @@ export const logout = async () => {
   }
 };
 
+export const createBlog = async (blogInfo) => {
+  try {
+      let cookies = Cookies.get('jwt-cookie-blog')
+      console.log(cookies)
+      let success = await Axios.post('/api/expense/create-blog', blogInfo, {
+          headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+              Authorization: 'Bearer ' + cookies 
+          }
+      } );
+      
+      return success.data;
+  }catch(e) {
+      throw Error(e.response.data.message)
+  }
+}
+export const getAllBlogs = async () => {
+  try {
+      let success = await Axios.get("/api/blog/get-all-blogs", {
+          withCredentials: true,
+          headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + isAuthenticated(),
+          },
+      });
+      return success.data;
+  } catch (e) {
+      throw Error(e.response.data.message);
+  }
+};
+export const deleteBlogByID = async (id) => {
+  try {
+      let success = await Axios.delete(`/api/blog/delete-blog-by-id/${id}`,
+      {
+      headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + isAuthenticated(),
+        },
+      }
+    );
+    return success.data;
+  }catch (e){
+      throw Error(e.response.data.message);
+  }
+}
+
 // export const updateProfile = async (profileInfo) => {
 //   try {
 //     let success = await Axios.
