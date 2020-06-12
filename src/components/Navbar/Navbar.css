@@ -4,21 +4,24 @@
   align-items: center;
   border-bottom: 1px solid black;
   padding: 0.75rem 0;
+  background-color: black;
 }
 
 .nav-home {
   margin: 0 5rem;
   padding: 0;
   font-family: 'Sriracha', cursive;
+  color: white;
 }
 
 li {
   list-style: none;
 }
 
-a {
+nav a {
   text-decoration: none;
   cursor: pointer;
+  color: white;
 }
 
 ul {

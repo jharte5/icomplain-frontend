@@ -14,6 +14,11 @@ code {
     monospace;
 }
 
+.app {
+  position: relative;
+  min-height: 100vh;
+}
+
 .landing {
   display: flex;
   height: 85vh;

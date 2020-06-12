@@ -6,13 +6,15 @@ import { BlogProvider } from './components/Context/BlogContext';
 
 function App() {
   return (
-    <Provider>
-      <BlogProvider>
-        <Router>
-          <MainRouter />
-        </Router>
-      </BlogProvider>
-    </Provider>
+    <div className="app">
+      <Provider>
+        <BlogProvider>
+          <Router>
+            <MainRouter />
+          </Router>
+        </BlogProvider>
+      </Provider>
+    </div>
   );
 }
 
