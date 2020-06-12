@@ -21,7 +21,7 @@ code {
 
 .landing {
   display: flex;
-  height: 85vh;
+  height: 86vh;
 }
 
 input:focus {
@@ -29,5 +29,6 @@ input:focus {
 }
 
 a {
+  text-decoration: none;
   color: black;
 }

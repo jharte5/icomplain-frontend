@@ -18,7 +18,7 @@ export default function UnAuthLinks() {
         <li>
           <NavLink
             to="/signup"
-            className="navbar"
+            className="nav-link"
             activeStyle={{ fontWeight: 'bold' }}
             activeClassName="selected"
           >
@@ -28,7 +28,7 @@ export default function UnAuthLinks() {
         <li>
           <NavLink
             to="/login"
-            className="navbar"
+            className="nav-link"
             activeStyle={{ fontWeight: 'bold' }}
             activeClassName="selected"
           >

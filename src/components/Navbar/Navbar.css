@@ -19,9 +19,11 @@ li {
 }
 
 nav a {
-  text-decoration: none;
-  cursor: pointer;
   color: white;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
 }
 
 ul {

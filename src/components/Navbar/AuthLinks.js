@@ -35,7 +35,7 @@ class AuthLinks extends Component {
           <li>
             <NavLink
               to="/addblog"
-              className="navbar"
+              className="nav-link"
               activeStyle={{ fontWeight: 'bold' }}
               activeClassName="selected"
             >
@@ -45,7 +45,7 @@ class AuthLinks extends Component {
           <li>
             <NavLink
               to="/profile"
-              className="navbar"
+              className="nav-link"
               activeStyle={{ fontWeight: 'bold' }}
               activeClassName="selected"
             >
@@ -53,7 +53,7 @@ class AuthLinks extends Component {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/login" className="navbar" onClick={this.logout}>
+            <NavLink to="/login" className="nav-link" onClick={this.logout}>
               logout
             </NavLink>
           </li>
