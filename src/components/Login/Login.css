@@ -19,6 +19,8 @@
 
 .login-container h1 {
   margin-bottom: 1rem;
+  cursor: default;
+  font-family: 'Sriracha', cursive;
 }
 
 .login-container a:hover {

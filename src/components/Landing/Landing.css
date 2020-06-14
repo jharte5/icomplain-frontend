@@ -25,5 +25,6 @@
 
 .landing-container h1 {
   text-shadow: 1px 1px 1px white;
+  cursor: default;
   font-family: 'Sriracha', cursive;
 }
