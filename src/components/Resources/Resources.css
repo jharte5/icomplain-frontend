@@ -1,0 +1,8 @@
+.resources {
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  margin-top: 1.5rem;
+}

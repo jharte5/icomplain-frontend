@@ -1,3 +1,14 @@
+.blogs {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding-top: 1.5rem;
+}
+
+table {
+  width: 95%;
+}
+
 .coming-soon {
   display: flex;
   justify-content: center;
