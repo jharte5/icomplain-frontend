@@ -5,9 +5,6 @@ import './Resources.css';
 export default function Resources() {
   return (
     <div className="resources">
-      <div>
-        
-      </div>
       <h2>How to properly wear face masks:</h2>
       <Player />
       <h2>

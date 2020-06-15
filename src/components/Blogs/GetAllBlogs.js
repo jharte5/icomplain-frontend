@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-// import Axios from 'axios';
+import Axios from 'axios';
 import ChipInput from 'material-ui-chip-input';
-import { toast } from 'react-toastify';
 import ButtonGroup from '../Shared/ButtonGroup';
 import { BlogContext } from '../Context/BlogContext';
 import { deleteBlogByID } from '../Services/AuthHelpers';
 import BlogModal from './BlogModal';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class GetAllBlogs extends Component {
   static contextType = BlogContext;
@@ -20,17 +21,21 @@ class GetAllBlogs extends Component {
       item,
     });
   };
+
   onModalClose = () => {
     this.setState({
       isOpen: false,
     });
   };
+
   handleDeleteByID = async item => {
     try {
+      console.log(item);
       let deletedBlog = await deleteBlogByID(item._id);
+      console.log(deletedBlog);
       this.context.BlogDispatch({
         type: 'DELETE_BY_ID',
-        payload: deletedBlog,
+        payload: item,
       });
       toast.success('Post deleted', {
         position: 'top-center',
@@ -53,6 +58,14 @@ class GetAllBlogs extends Component {
       });
     }
   };
+
+  componentDidMount() {
+    Axios.get('http://localhost:3001/api/blogs/all-blogs').then(response => {
+      console.log('blogData', response.data);
+      this.setState({ blogArray: response.data });
+    });
+  }
+
   render() {
     const { blogArray } = this.context;
     const { isOpen, item } = this.state;

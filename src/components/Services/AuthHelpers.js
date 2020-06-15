@@ -94,11 +94,12 @@ export const getAllBlogs = async () => {
 };
 export const deleteBlogByID = async (id) => {
   try {
-    let success = await Axios.delete(`/api/blog/delete-blog-by-id/${id}`, {
+    const token = localStorage.getItem("token");
+    let success = await Axios.delete(`/api/blogs/delete-blog-by-id/${id}`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        Authorization: "Bearer " + isAuthenticated(),
+        Authorization: "Bearer " + token,
       },
     });
     return success.data;

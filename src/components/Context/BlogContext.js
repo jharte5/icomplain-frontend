@@ -16,6 +16,7 @@ const reducer = (state, action) => {
                 blogArray: [...state.blogArray, action.payload],
             }
         case "DELETE_BY_ID":
+            console.log(action.payload)
             return{
                 ...state,
                 blogArray: state.blogArray.filter(
