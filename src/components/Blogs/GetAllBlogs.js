@@ -114,4 +114,5 @@ class GetAllBlogs extends Component {
     );
   }
 }
+
 export default GetAllBlogs;
