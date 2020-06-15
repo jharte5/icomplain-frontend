@@ -34,6 +34,16 @@ class AuthLinks extends Component {
         <ul className="nav-ul">
           <li>
             <NavLink
+              to="/resources"
+              className="nav-link"
+              activeStyle={{ fontWeight: 'bold' }}
+              activeClassName="selected"
+            >
+              Resources
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
               to="/addblog"
               className="nav-link"
               activeStyle={{ fontWeight: 'bold' }}
