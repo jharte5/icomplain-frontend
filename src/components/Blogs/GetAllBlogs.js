@@ -8,7 +8,7 @@ import ButtonGroup from '../Shared/ButtonGroup';
 import { BlogContext } from '../Context/BlogContext';
 import { deleteBlogByID } from '../Services/AuthHelpers';
 import BlogModal from './BlogModal';
-import './GetAllBlogs.css';
+import './Blogs.css';
 console.log(this)
 
 class GetAllBlogs extends Component {
@@ -31,13 +31,13 @@ class GetAllBlogs extends Component {
     };
     handleDeleteByID = async (item) => { 
         try {
-            console.log(item)
+            console.log('Item',item)
+            this.context.dispatch({
+                type: 'DELETE_BY_ID',
+                payload: item,
+            });
         let deletedBlog = await deleteBlogByID(item._id);
-            console.log(deletedBlog)
-        this.context.BlogDispatch({
-            type: 'DELETE_BY_ID',
-            payload: item,
-        });
+            console.log('deleted',deletedBlog)
         toast.success('Post deleted', {
             position: 'top-center',
             autoClose: 5000,
@@ -59,12 +59,12 @@ class GetAllBlogs extends Component {
         });
         }
     };
-    componentDidMount() {
+    /*componentDidMount() {
         Axios.get('http://localhost:3001/api/blogs/all-blogs').then( (response ) => {
                 console.log("blogData", response.data);
                 this.setState({ blogArray: response.data })
             })
-    }
+    }*/
     render() {
         
         const { blogArray } = this.context;

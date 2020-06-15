@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import Axios from "../Services/Axios";
 
 export const Context = React.createContext();
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'SUCCESS_SIGNED_IN':
+    case "SUCCESS_SIGNED_IN":
       return {
         ...state,
         isAuth: {
@@ -12,7 +13,7 @@ const reducer = (state, action) => {
           auth: true,
         },
       };
-    case 'SUCCESS_SIGNED_OUT':
+    case "SUCCESS_SIGNED_OUT":
       return {
         ...state,
         isAuth: {
@@ -31,10 +32,25 @@ export class Provider extends Component {
       user: null,
       auth: false,
     },
-    dispatch: action => {
-      this.setState(state => reducer(state, action));
+    dispatch: (action) => {
+      this.setState((state) => reducer(state, action));
     },
   };
+
+  getUser = async () => {
+    const token = localStorage.getItem("token");
+    const result = await Axios.get("/api/users/get-user/"+token);
+    this.setState({
+      isAuth: {
+        user: result.data,
+        auth: true
+      }
+    })
+  };
+
+  componentDidMount() {
+    this.getUser();
+  }
 
   render() {
     return (

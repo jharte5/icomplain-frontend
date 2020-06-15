@@ -16,7 +16,7 @@ const reducer = (state, action) => {
                 blogArray: [...state.blogArray, action.payload],
             }
         case "DELETE_BY_ID":
-            console.log(action.payload)
+            console.log('action',action)
             return{
                 ...state,
                 blogArray: state.blogArray.filter(
@@ -30,7 +30,7 @@ const reducer = (state, action) => {
 export class BlogProvider extends Component {
     state = {
         blogArray: [],
-        blogDispatch: (action) => {
+        dispatch: (action) => {
             this.setState((state) => reducer(state,action))
         }
     }

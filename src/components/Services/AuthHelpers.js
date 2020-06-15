@@ -18,8 +18,9 @@ export const login = async (userStuff) => {
     let success = await Axios.post("/api/users/login", userStuff, {
       withCredentials: true,
     });
-    console.log(success);
+    console.log(success.data.token);
     localStorage.setItem("token", success.data.token.jwtToken);
+    localStorage.setItem("refresh", success.data.token.jwtRefreshToken);
     return success.data;
   } catch (e) {
     console.log(e);
@@ -95,13 +96,14 @@ export const getAllBlogs = async () => {
 export const deleteBlogByID = async (id) => {
   try {
     const token = localStorage.getItem("token");
-    let success = await Axios.delete(`/api/blogs/delete-blog-by-id/${id}`, {
+    let success = await Axios.post(`/api/blogs/delete-blog-by-id/${id}`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
         Authorization: "Bearer " + token,
       },
     });
+    console.log(success)
     return success.data;
   } catch (e) {
     throw Error(e.response.data.message);

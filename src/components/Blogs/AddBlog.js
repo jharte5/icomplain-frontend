@@ -196,7 +196,10 @@ class AddBlog extends Component {
       let inputForm = {
         ...this.state.formSetting,
       };
-
+      this.context.dispatch({
+        type:'CREATE_BLOG',
+        payload: blogObj
+      })
       inputForm['blogTitle'].value = '';
       inputForm['blogArticle'].value = '';
       inputForm['dateInput'].startDate = new Date();
@@ -206,6 +209,7 @@ class AddBlog extends Component {
         ...this.state,
         formSetting: inputForm,
       });
+
 
       toast.success(`Created complaint!`, {
         position: 'top-center',
