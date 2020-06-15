@@ -29,12 +29,14 @@ class GetAllBlogs extends Component {
         isOpen: false,
         });
     };
-    handleDeleteByID = async item => {
+    handleDeleteByID = async (item) => { 
         try {
+            console.log(item)
         let deletedBlog = await deleteBlogByID(item._id);
+            console.log(deletedBlog)
         this.context.BlogDispatch({
             type: 'DELETE_BY_ID',
-            payload: deletedBlog,
+            payload: item,
         });
         toast.success('Post deleted', {
             position: 'top-center',
@@ -57,6 +59,12 @@ class GetAllBlogs extends Component {
         });
         }
     };
+    componentDidMount() {
+        Axios.get('http://localhost:3001/api/blogs/all-blogs').then( (response ) => {
+                console.log("blogData", response.data);
+                this.setState({ blogArray: response.data })
+            })
+    }
     render() {
         
         const { blogArray } = this.context;
@@ -87,13 +95,6 @@ class GetAllBlogs extends Component {
                     <tr key={_id}>
                         <td>{title}</td>
                         <td>{article}</td>
-                        <td>
-                        {/* <DatePicker
-                            className="expenses--input-date-list"
-                            selected={parseISO(dateInput)}
-                            disabled
-                        /> */}
-                        </td>
                         <td>
                         <ChipInput
                             className="blog--chip"

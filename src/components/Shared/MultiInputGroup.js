@@ -33,20 +33,8 @@ function MultiInputGroup(props) {
         />
       );
       break;
-    // case 'dateInput':
-    //   const { dateInput } = props;
-
-      // multiInputField = (
-        // <DatePicker
-        //   className="expenses--input-date"
-        //   selected={dateInput.startDate}
-        //   onChange={dateInput.handleOnChange.handleOnDateChange}
-        // />
-      // );
-      // break;
     case 'chipInput':
       const { chipInput } = props;
-
       multiInputField = (
         <ChipInputGroup
           className="chipInput"
