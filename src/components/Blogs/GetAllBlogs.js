@@ -8,7 +8,7 @@ import { BlogContext } from '../Context/BlogContext';
 import { deleteBlogByID } from '../Services/AuthHelpers';
 import BlogModal from './BlogModal';
 import './GetAllBlogs.css';
-console.log(this)
+// console.log(this)
 
 class GetAllBlogs extends Component {
     static contextType = BlogContext;
