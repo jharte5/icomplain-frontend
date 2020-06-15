@@ -31,7 +31,7 @@ class AddBlog extends Component {
                 },
                 blogArticle: {
                     name: 'blogArticle',
-                    type: 'text',
+                    type: 'complain',
                     placeholder: 'Complain here',
                     value: '',
                     handleOnChange: {
@@ -193,10 +193,10 @@ class AddBlog extends Component {
         } = this.state.formSetting;
     
             let blogObj = {
-            chipInput: chipInput.valueArray,
-            dateInput: dateInput.startDate,
-            blogArticle: blogArticle.value,
-            blogTitle: blogTitle.value,
+            // chipInput: chipInput.valueArray,
+            // dateInput: dateInput.startDate,
+            article: blogArticle.value,
+            title: blogTitle.value,
         };
     
             let success = await createBlog(blogObj);
@@ -245,7 +245,7 @@ class AddBlog extends Component {
             });
         }
         return (
-            <div className="expenses">
+            <div className="blogs">
                 <ToastContainer
                     position="top-center"
                     autoClose={5000}
@@ -257,8 +257,8 @@ class AddBlog extends Component {
                     draggable
                     pauseOnHover
                 />
-                <div className="expenses--input-container">
-                    <form className="signup-form" onSubmit={this.handleExpenseSubmit}>
+                <div className="blogs--input-container">
+                    <form className="signup-form" onSubmit={this.handleBlogSubmit}>
                         {inputArray.map((element) => {
                             const {
                                 formSetting: { name, type },

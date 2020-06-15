@@ -20,7 +20,7 @@ function MultiInputGroup(props) {
         />
       );
       break;
-    case 'text':
+    case 'complain':
       const { blogArticle } = props;
       multiInputField = (
         <InputGroup
