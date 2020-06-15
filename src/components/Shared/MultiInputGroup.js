@@ -33,8 +33,8 @@ function MultiInputGroup(props) {
         />
       );
       break;
-    case 'dateInput':
-      const { dateInput } = props;
+    // case 'dateInput':
+    //   const { dateInput } = props;
 
       // multiInputField = (
         // <DatePicker
@@ -43,7 +43,7 @@ function MultiInputGroup(props) {
         //   onChange={dateInput.handleOnChange.handleOnDateChange}
         // />
       // );
-      break;
+      // break;
     case 'chipInput':
       const { chipInput } = props;
 

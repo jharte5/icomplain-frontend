@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 // import DatePicker from 'react-datepicker';
+import Axios from "axios";
 import ChipInput from 'material-ui-chip-input';
-import { parseISO } from 'date-fns';
+// import { parseISO } from 'date-fns';
 import { toast } from 'react-toastify';
 import ButtonGroup from '../Shared/ButtonGroup';
 import { BlogContext } from '../Context/BlogContext';
@@ -15,6 +16,12 @@ class GetAllBlogs extends Component {
         isOpen: false,
         item: null,
     };
+    componentDidMount() {
+        Axios.get("http://localhost:3001/api/blogs/all-blogs").then((response) => {
+            console.log("blogData", response.data);
+            this.setState({ blogs: response.data });
+        });
+    }
     onModalOpen = item => {
         this.setState({
         isOpen: true,
@@ -76,7 +83,6 @@ class GetAllBlogs extends Component {
                     const {
                     blogArticle,
                     blogTitle,
-                    dateInput,
                     chipInput,
                     _id,
                     } = item;

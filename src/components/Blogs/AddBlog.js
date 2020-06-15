@@ -187,7 +187,6 @@ class AddBlog extends Component {
         try {
             const {
             chipInput,
-            dateInput,
             blogArticle,
             blogTitle,
         } = this.state.formSetting;
@@ -215,7 +214,7 @@ class AddBlog extends Component {
             formSetting: inputForm,
         });
     
-            toast.success(`🦄 :face_with_symbols_on_mouth: created complain!`, {
+            toast.success(`:face_with_symbols_on_mouth: created complain!`, {
                 position: "top-center",
                 autoClose: 5000,
                 hideProgressBar: false,
