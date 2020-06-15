@@ -17,12 +17,7 @@ class GetAllBlogs extends Component {
         isOpen: false,
         item: null,
     };
-    componentDidMount() {
-        Axios.get("http://localhost:3001/api/blogs/all-blogs").then((response) => {
-            console.log("blogData", response.data);
-            this.setState({ blogs: response.data });
-        });
-    }
+    
     onModalOpen = item => {
         this.setState({
         isOpen: true,
@@ -63,9 +58,10 @@ class GetAllBlogs extends Component {
         }
     };
     render() {
-        console.log(this.context)
+        
         const { blogArray } = this.context;
         const { isOpen, item } = this.state;
+        console.log(blogArray)
         return (
         <>
             <hr />
@@ -73,24 +69,24 @@ class GetAllBlogs extends Component {
             <table>
                 <tbody>
                 <tr>
-                    <th>Blog Title</th>
-                    <th>Blog Article</th>
-                    <th>Blog Date</th>
+                    <th>Title</th>
+                    <th>Article</th>
                     <th>Blog Tags</th>
                     <th>Blog Edit</th>
                     <th>Delete</th>
                 </tr>
                 {blogArray.map(item => {
                     const {
-                    blogArticle,
-                    blogTitle,
+                    article,
+                    title,
                     chipInput,
                     _id,
                     } = item;
+                    console.log(item)
                     return (
                     <tr key={_id}>
-                        <td>{blogTitle}</td>
-                        <td>{blogArticle}</td>
+                        <td>{title}</td>
+                        <td>{article}</td>
                         <td>
                         {/* <DatePicker
                             className="expenses--input-date-list"

@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Axios from 'axios';
 export const BlogContext = React.createContext();
 
 const reducer = (state, action) => {
@@ -34,7 +35,10 @@ export class BlogProvider extends Component {
     }
     async componentDidMount() {
         try {
-
+            Axios.get('http://localhost:3001/api/blogs/all-blogs').then( (response ) => {
+                console.log("blogData", response.data);
+                this.setState({ blogArray: response.data })
+            })
         }catch (e) {
             console.log(e)
         }
