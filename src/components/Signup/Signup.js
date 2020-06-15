@@ -290,7 +290,7 @@ class Signup extends Component {
     }
     return (
       <div className="landing">
-        {/* <BlogSlider /> */}
+        <BlogSlider />
         <div className="signup">
           <div className="signup-container">
             <ToastContainer
