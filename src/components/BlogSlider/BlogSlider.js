@@ -1,9 +1,23 @@
-import React, { Component } from 'react';
-import { CarouselProvider, Slider, Slide } from 'pure-react-carousel';
-import './BlogSlider.css';
-import 'pure-react-carousel/dist/react-carousel.es.css';
+import React, { Component } from "react";
+import { CarouselProvider, Slider, Slide } from "pure-react-carousel";
+import Axios from "axios";
+import "./BlogSlider.css";
+import "pure-react-carousel/dist/react-carousel.es.css";
 
 export default class extends Component {
+  state = {
+    blogs: [],
+  };
+
+  componentDidMount() {
+    Axios.get("http://localhost:3001/api/blogs/all-blogs").then((response) => {
+      console.log("blogData", response.data);
+      this.setState({ blogs: response.data });
+    });
+
+    // result.data;
+  }
+
   render() {
     return (
       <CarouselProvider
@@ -18,36 +32,13 @@ export default class extends Component {
         step={1}
       >
         <Slider className="slider">
-          <Slide className="slide" index={0}>
-            Slide 1
-          </Slide>
-          <Slide className="slide" index={1}>
-            Slide 2
-          </Slide>
-          <Slide className="slide" index={2}>
-            Slide 3
-          </Slide>
-          <Slide className="slide" index={3}>
-            Slide 4
-          </Slide>
-          <Slide className="slide" index={4}>
-            Slide 5
-          </Slide>
-          <Slide className="slide" index={5}>
-            Slide 6
-          </Slide>
-          <Slide className="slide" index={6}>
-            Slide 7
-          </Slide>
-          <Slide className="slide" index={7}>
-            Slide 8
-          </Slide>
-          <Slide className="slide" index={8}>
-            Slide 9
-          </Slide>
-          <Slide className="slide" index={9}>
-            Slide 10
-          </Slide>
+          {this.state.blogs.map((b, i) => {
+            return (
+              <Slide className="slide" index={i} key={i}>
+                {b.title}
+              </Slide>
+            );
+          })}
         </Slider>
       </CarouselProvider>
     );

@@ -60,11 +60,11 @@ class Signup extends Component {
 
   componentDidMount() {
     if (isAuthenticated()) {
-      this.props.history.push('/');
+      this.props.history.push('/blogs');
     }
   }
 
-  onChangePassword = e => {
+  onChangePassword = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
     });
@@ -290,7 +290,7 @@ class Signup extends Component {
     }
     return (
       <div className="landing">
-        <BlogSlider />
+        {/* <BlogSlider /> */}
         <div className="signup">
           <div className="signup-container">
             <ToastContainer

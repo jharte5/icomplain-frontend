@@ -1,24 +1,25 @@
-import Axios from './Axios';
-import Cookies from 'js-cookie';
-import jwt_decode from 'jwt-decode';
+import Axios from "./Axios";
+import Cookies from "js-cookie";
+import jwt_decode from "jwt-decode";
 
-export const createUser = async userInfo => {
+export const createUser = async (userInfo) => {
   try {
-    let success = await Axios.post('/api/users/create-user', userInfo);
+    let success = await Axios.post("/api/users/create-user", userInfo);
 
     return success.data;
   } catch (e) {
-    console.log(e)
+    console.log(e);
     throw Error(e.response.data.message);
   }
 };
 
-export const login = async userStuff => {
+export const login = async (userStuff) => {
   try {
-    let success = await Axios.post('/api/users/login', userStuff, {
+    let success = await Axios.post("/api/users/login", userStuff, {
       withCredentials: true,
     });
-      console.log(success)
+    console.log(success);
+    localStorage.setItem("token", success.data.token.jwtToken);
     return success.data;
   } catch (e) {
     console.log(e);
@@ -27,9 +28,9 @@ export const login = async userStuff => {
 };
 
 export const isAuthenticated = () => {
-  if (typeof window == 'undefined') return false;
+  if (typeof window == "undefined") return false;
 
-  let foundCookie = Cookies.get('jwt-cookie-blog');
+  let foundCookie = Cookies.get("jwt-cookie-blog");
 
   if (foundCookie) {
     return foundCookie;
@@ -42,16 +43,16 @@ export const setUserAuth = (jwtToken, dispatch) => {
   let decodedToken = jwt_decode(jwtToken);
 
   dispatch({
-    type: 'SUCCESS_SIGNED_IN',
+    type: "SUCCESS_SIGNED_IN",
     payload: decodedToken,
   });
 };
 
 export const logout = async () => {
   try {
-    await Axios.get('/api/users/logout');
-    Cookies.remove('jwt-cookie-blog');
-    Cookies.remove('jwt-cookie-refresh-blog');
+    await Axios.get("/api/users/logout");
+    Cookies.remove("jwt-cookie-blog");
+    Cookies.remove("jwt-cookie-refresh-blog");
   } catch (e) {
     throw Error(e.response.data.message);
   }
@@ -59,52 +60,52 @@ export const logout = async () => {
 
 export const createBlog = async (blogInfo) => {
   try {
-      let cookies = Cookies.get('jwt-cookie-blog')
-      console.log(cookies)
-      let success = await Axios.post('/api/expense/create-blog', blogInfo, {
-          headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
-              Authorization: 'Bearer ' + cookies 
-          }
-      } );
-      
-      return success.data;
-  }catch(e) {
-      throw Error(e.response.data.message)
+    let cookies = Cookies.get("jwt-cookie-blog");
+    const token = localStorage.getItem("token");
+    console.log(cookies);
+    let success = await Axios.post("/api/blogs/create-blog", blogInfo, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    });
+
+    return success.data;
+  } catch (e) {
+    throw Error(e.response.data.message);
   }
-}
+};
 export const getAllBlogs = async () => {
   try {
-      let success = await Axios.get("/api/blog/get-all-blogs", {
-          withCredentials: true,
-          headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-              Authorization: "Bearer " + isAuthenticated(),
-          },
-      });
-      return success.data;
+    const token = localStorage.getItem("token");
+    let success = await Axios.get("/api/blog/get-all-blogs", {
+      withCredentials: true,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    });
+    return success.data;
   } catch (e) {
-      throw Error(e.response.data.message);
+    throw Error(e.response.data.message);
   }
 };
 export const deleteBlogByID = async (id) => {
   try {
-      let success = await Axios.delete(`/api/blog/delete-blog-by-id/${id}`,
-      {
+    let success = await Axios.delete(`/api/blog/delete-blog-by-id/${id}`, {
       headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + isAuthenticated(),
-        },
-      }
-    );
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + isAuthenticated(),
+      },
+    });
     return success.data;
-  }catch (e){
-      throw Error(e.response.data.message);
+  } catch (e) {
+    throw Error(e.response.data.message);
   }
-}
+};
 
 // export const updateProfile = async (profileInfo) => {
 //   try {

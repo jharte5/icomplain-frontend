@@ -184,7 +184,7 @@ class Login extends Component {
 
     return (
       <div className="landing">
-        <BlogSlider />
+        {/* <BlogSlider /> */}
         <Consumer>
           {({ dispatch }) => {
             return (
